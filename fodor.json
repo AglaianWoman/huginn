@@ -22,5 +22,17 @@
 	"distro": "ubuntu-14-04-x64",
 	"description": "Build agents that monitor and act on your behalf. Your agents are standing by!",
 	"keywords": ["fodor", "huginn"],
-	"homepage": "https://github.com/cantino/huginn"
+	"homepage": "https://github.com/fodorxyz/huginn",
+		"inputs": [
+		{
+			"title": "Admin Username",
+			"name": "admin_username",
+			"type": "string"
+		},
+		{
+			"title": "Admin Password",
+			"name": "admin_password",
+			"type": "password"
+		}
+	]
 }
