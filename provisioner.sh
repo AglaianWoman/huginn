@@ -42,7 +42,7 @@ debconf-set-selections <<< "mysql-server mysql-server/root_password_again passwo
 apt-get install -y mysql-server mysql-client libmysqlclient-dev
 
 export HUGINN_DB_PASSWORD=$(gen_password)
-mysql -uroot -p"${RANDOM_PASSWORD}" -e "CREATE USER 'huginn'@'localhost' IDENTIFIED BY '${HUGINN_DB_PASSWORD';"
+mysql -uroot -p"${RANDOM_PASSWORD}" -e "CREATE USER 'huginn'@'localhost' IDENTIFIED BY '${HUGINN_DB_PASSWORD}';"
 mysql -uroot -p"${RANDOM_PASSWORD}" -e "GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER, LOCK TABLES ON \`huginn_production\`.* TO 'huginn'@'localhost';"
 
 
