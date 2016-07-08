@@ -32,7 +32,9 @@
 	{
 		"title": "Admin Password",
 		"name": "admin_password",
-		"type": "password"
+		"notes": "Must be longer than 8 characters",
+		"type": "regex",
+		"regex": ".{8,}"
 	}
 	]
 }
