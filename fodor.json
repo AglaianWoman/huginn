@@ -3,7 +3,7 @@
 	"installpath": "/tmp/huginn",
 	"provisioner": "provisioner.sh",
 	"text": {
-		"complete": "User/Pass: huginn/huginn123 - please change"
+		"complete": "Enjoy!"
 	},
 	"links": [
 		{
