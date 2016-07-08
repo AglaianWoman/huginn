@@ -36,13 +36,14 @@ adduser --disabled-login --gecos 'Huginn' huginn
 
 
 # Set the default root password - we should change this after installation
-debconf-set-selections <<< 'mysql-server mysql-server/root_password password mysqlsecretpassword'
-debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password mysqlsecretpassword'
+debconf-set-selections <<< "mysql-server mysql-server/root_password password ${RANDOM_PASSWORD}"
+debconf-set-selections <<< "mysql-server mysql-server/root_password_again password ${RANDOM_PASSWORD}"
 
 apt-get install -y mysql-server mysql-client libmysqlclient-dev
 
-mysql -uroot -pmysqlsecretpassword -e "CREATE USER 'huginn'@'localhost' IDENTIFIED BY 'huginn';"
-mysql -uroot -pmysqlsecretpassword -e "GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER, LOCK TABLES ON \`huginn_production\`.* TO 'huginn'@'localhost';"
+export HUGINN_DB_PASSWORD=$(gen_password)
+mysql -uroot -p"${RANDOM_PASSWORD}" -e "CREATE USER 'huginn'@'localhost' IDENTIFIED BY '${HUGINN_DB_PASSWORD';"
+mysql -uroot -p"${RANDOM_PASSWORD}" -e "GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER, LOCK TABLES ON \`huginn_production\`.* TO 'huginn'@'localhost';"
 
 
 # We'll install Huginn into the home directory of the user "huginn"
@@ -75,7 +76,7 @@ sudo -u huginn -H cp config/unicorn.rb.example config/unicorn.rb
 # Update .env with production details, and valid database credentials
 sed -i -e 's/DATABASE_NAME=huginn_development/DATABASE_NAME=huginn_production/g' .env
 sed -i -e 's/DATABASE_USERNAME=root/DATABASE_USERNAME=huginn/g' .env
-sed -i -e 's/DATABASE_PASSWORD=""/DATABASE_PASSWORD="huginn"/g' .env
+sed -i -e "s/DATABASE_PASSWORD=\"\"/DATABASE_PASSWORD=\"${HUGINN_DB_PASSWORD}\"/g" .env
 sed -i -e 's/# RAILS_ENV=production/RAILS_ENV=production/g' .env
 
 sudo -u huginn -H bundle install --deployment --without development test
@@ -91,10 +92,9 @@ sudo -u huginn -H bundle exec rake db:create RAILS_ENV=production
 sudo -u huginn -H bundle exec rake db:migrate RAILS_ENV=production
 
 # Create admin user and example agents using the default admin/password login
-sudo -u huginn -H bundle exec rake db:seed RAILS_ENV=production SEED_USERNAME=huginn SEED_PASSWORD=huginn123
+sudo -u huginn -H bundle exec rake db:seed RAILS_ENV=production SEED_USERNAME=$ADMIN_USERNAME SEED_PASSWORD=$ADMIN_PASSWORD
 
 sudo -u huginn -H bundle exec rake assets:precompile RAILS_ENV=production
-
 
 # Comment out workers from Procfile
 sed -i -e 's/^web:/#web:/g' -e 's/^jobs/#jobs/g' Procfile
