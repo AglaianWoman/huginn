@@ -15,7 +15,7 @@ cd /tmp/
 wget http://security.ubuntu.com/ubuntu/pool/main/libx/libxml2/libxml2_2.9.1+dfsg1-3ubuntu4.8_amd64.deb
 dpkg -i libxml2_2.9.1+dfsg1-3ubuntu4.8_amd64.deb
 
-http://security.ubuntu.com/ubuntu/pool/main/libx/libxml2/libxml2-dev_2.9.1+dfsg1-3ubuntu4.8_amd64.deb
+wget http://security.ubuntu.com/ubuntu/pool/main/libx/libxml2/libxml2-dev_2.9.1+dfsg1-3ubuntu4.8_amd64.deb
 dpkg -i libxml2-dev_2.9.1+dfsg1-3ubuntu4.8_amd64.deb
 
 apt-get update && apt-get upgrade
