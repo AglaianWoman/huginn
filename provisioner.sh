@@ -10,6 +10,7 @@ echo "/swapfile   none    swap    sw    0   0" >> /etc/fstab
 sysctl vm.swappiness=10
 echo "vm.swappiness=10" >> /etc/sysctl.conf
 
+apt-get -y update
 apt-get install -y runit build-essential git zlib1g-dev libyaml-dev libssl-dev libgdbm-dev libreadline-dev libncurses5-dev libffi-dev curl openssh-server checkinstall libxml2-dev libxslt-dev libcurl4-openssl-dev libicu-dev logrotate python-docutils pkg-config cmake nodejs graphviz nginx python-software-properties
 
 apt-add-repository ppa:brightbox/ruby-ng
