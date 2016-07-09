@@ -1,4 +1,5 @@
 # Setup swap file so it works better on lower memory VMs
+set +e
 fallocate -l 4G /swapfile
 chmod 600 /swapfile
 mkswap /swapfile
