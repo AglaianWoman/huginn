@@ -1,5 +1,6 @@
 # Setup swap file so it works better on lower memory VMs
 set +e
+set -x
 fallocate -l 4G /swapfile
 chmod 600 /swapfile
 mkswap /swapfile
@@ -12,7 +13,7 @@ echo "vm.swappiness=10" >> /etc/sysctl.conf
 apt-get install -y runit build-essential git zlib1g-dev libyaml-dev libssl-dev libgdbm-dev libreadline-dev libncurses5-dev libffi-dev curl openssh-server checkinstall libxml2-dev libxslt-dev libcurl4-openssl-dev libicu-dev logrotate python-docutils pkg-config cmake nodejs graphviz nginx python-software-properties
 
 apt-add-repository ppa:brightbox/ruby-ng
-apt-get update
+apt-get -y update
 apt-get -y install ruby2.2 ruby2.2-dev
 
 # Make 'ruby' use the right version
