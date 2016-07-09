@@ -10,7 +10,17 @@ echo "/swapfile   none    swap    sw    0   0" >> /etc/fstab
 sysctl vm.swappiness=10
 echo "vm.swappiness=10" >> /etc/sysctl.conf
 
-apt-get -y update
+
+cd /tmp/
+wget http://security.ubuntu.com/ubuntu/pool/main/libx/libxml2/libxml2_2.9.1+dfsg1-3ubuntu4.8_amd64.deb
+dpkg -i libxml2_2.9.1+dfsg1-3ubuntu4.8_amd64.deb
+
+http://security.ubuntu.com/ubuntu/pool/main/libx/libxml2/libxml2-dev_2.9.1+dfsg1-3ubuntu4.8_amd64.deb
+dpkg -i libxml2-dev_2.9.1+dfsg1-3ubuntu4.8_amd64.deb
+
+apt-get update && apt-get upgrade
+
+# This install fails because of libxml2-dev and shared-mime-info
 apt-get install -y runit build-essential git zlib1g-dev libyaml-dev libssl-dev libgdbm-dev libreadline-dev libncurses5-dev libffi-dev curl openssh-server checkinstall libxml2-dev libxslt-dev libcurl4-openssl-dev libicu-dev logrotate python-docutils pkg-config cmake nodejs graphviz nginx python-software-properties
 
 apt-add-repository ppa:brightbox/ruby-ng
