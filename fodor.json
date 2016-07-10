@@ -25,8 +25,8 @@
 	},
 	"distro": "docker",
 	"description": "Build agents that monitor and act on your behalf. Your agents are standing by!",
-	"keywords": ["fodor", "huginn"],
-	"homepage": "https://github.com/fodorxyz/huginn",
+	"keywords": ["fodor", "huginn", "ifttt"],
+	"homepage": "https://github.com/cantino/huginn",
 	"inputs": [
 	]
 }
