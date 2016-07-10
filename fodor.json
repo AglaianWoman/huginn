@@ -8,7 +8,7 @@
 	"links": [
 		{
 			"title": "HTTP",
-			"url": "http://{{DOMAIN}}:3000/"
+			"url": "http://{{DOMAIN}}/"
 		},
 		{
 			"title": "Further reading",
