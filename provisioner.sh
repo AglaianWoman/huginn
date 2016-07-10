@@ -15,4 +15,6 @@ useradd -s/bin/bash -m huginn
 
 # Run the huginn docker container on port 3000, map the MySQL data to the host machine in /home/huginn/mysql-data
 # So the data is persisted across runs/updates (handy)
+mkdir /tmp/docker-huginn/
+cd /tmp/docker-huginn/
 docker run -i -p 80:3000 -v /home/huginn/mysql-data:/var/lib/mysql cantino/huginn
