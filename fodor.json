@@ -3,12 +3,16 @@
 	"installpath": "/tmp/huginn",
 	"provisioner": "provisioner.sh",
 	"text": {
-		"complete": "Default username/password: admin/password (please change)"
+		"complete": "Default username/password: admin/password"
 	},
 	"links": [
 		{
-			"title": "HTTP",
+			"title": "Huginn Backend",
 			"url": "http://{{DOMAIN}}/"
+		},
+		{
+			"title": "Change admin password",
+			"url": "http://{{DOMAIN}}/admin/users/1/edit"
 		},
 		{
 			"title": "Further reading",
