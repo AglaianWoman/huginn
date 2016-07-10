@@ -3,7 +3,7 @@
 	"installpath": "/tmp/huginn",
 	"provisioner": "provisioner.sh",
 	"text": {
-		"complete": "Default username/password: admin/admin (please change)"
+		"complete": "Default username/password: admin/password (please change)"
 	},
 	"links": [
 		{
