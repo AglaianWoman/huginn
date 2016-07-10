@@ -27,6 +27,7 @@
 	"description": "Build agents that monitor and act on your behalf. Your agents are standing by!",
 	"keywords": ["fodor", "huginn", "ifttt"],
 	"homepage": "https://github.com/cantino/huginn",
+	"image": "https://raw.githubusercontent.com/cantino/huginn/master/doc/imgs/your-agents.png",
 	"inputs": [
 	]
 }
