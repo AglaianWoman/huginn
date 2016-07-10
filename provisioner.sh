@@ -17,4 +17,4 @@ useradd -s/bin/bash -m huginn
 # So the data is persisted across runs/updates (handy)
 mkdir /tmp/docker-huginn/
 cd /tmp/docker-huginn/
-docker run -i -p 80:3000 -v /home/huginn/mysql-data:/var/lib/mysql cantino/huginn
+docker run -d -p 80:3000 -v /home/huginn/mysql-data:/var/lib/mysql cantino/huginn
